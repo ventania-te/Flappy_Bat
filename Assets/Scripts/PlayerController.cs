@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
                 rb.simulated = true; //ativa a fisica
             }
             rb.linearVelocity = Vector2.up * speed;
+            
         }
     }
 
