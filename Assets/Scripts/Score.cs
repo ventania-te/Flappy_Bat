@@ -1,37 +1,62 @@
-using TMPro;
 using UnityEngine;
+using TMPro;
 
 public class Score : MonoBehaviour
 {
+
     private float score = 0f;
     [SerializeField] private TextMeshProUGUI scoreText;
 
-    //Aumentar a Dificuldade
+    //Aumentar a dificuldade
     private int level = 1;
-    private float proximolevel = 10f;
+    private float proximoLevel = 10f;
+
+
+    public GameObject background;
+    public Material[] backgroundMaterials;
+    private int ultimoLevel = 1;
 
     void Update()
     {
-        if(PlayerController.Instance.gameStarted)
+        if (PlayerController.Instance.gameStarted && !GameOver.Instance.IsGameOver)
         {
             sistemaPontos();
-        }
-    }
 
+
+            if (level > ultimoLevel)
+            {
+                TrocarBackground();
+                ultimoLevel = level;
+            }
+        }
+
+    }
 
     private void sistemaPontos()
     {
         score += Time.deltaTime;
-        scoreText.text = "Score: "  + Mathf.FloorToInt(score).ToString();
+        scoreText.text = "Score: " + Mathf.FloorToInt(score).ToString();
     }
 
     public int GanhaLevel()
     {
-        if (score >= proximolevel)
+        if (score >= proximoLevel)
         {
             level++;
-            proximolevel += 10f;
+            proximoLevel += 10f;
         }
         return level;
     }
+
+    private void TrocarBackground()
+    {
+        if (backgroundMaterials.Length > (level - 1))
+        {
+            background.GetComponent<Renderer>().material =
+                backgroundMaterials[level - 1];
+        }
+    }
+
+
+
 }

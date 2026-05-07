@@ -51,7 +51,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            GameOver.Instance.MetodoGameOver("Game Over");
+            Destroy(gameObject); 
+        }
+    }
 
 
 

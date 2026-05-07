@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6143199083933528147}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   speed: 5
+  gameStarted: 0
 --- !u!1 &3736793342328363351
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,7 +245,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -3606365097131015313, guid: 27dda383815159b4ebff9dab87ca895b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

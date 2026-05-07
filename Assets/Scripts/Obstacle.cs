@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Obstacle : MonoBehaviour
@@ -5,17 +6,20 @@ public class Obstacle : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private Score scoreScript;
 
+    private int level = 0;
 
     private void Start()
     {
-        scoreScript = GameObject.FindGameObjectWithTag("GameController").GetComponent<Score>();
+        scoreScript = GameObject.FindGameObjectWithTag("GameController")
+        .GetComponent<Score>();
     }
 
     private void Update()
     {
-        if (PlayerController.Instance.gameStarted)
+        if (PlayerController.Instance.gameStarted && !GameOver.Instance.IsGameOver)
         {
-            speed = 5f + scoreScript.GanhaLevel();
+            level = scoreScript.GanhaLevel();
+            speed = 5f + level;
 
             transform.position +=
                 Vector3.left * speed * Time.deltaTime;
@@ -24,8 +28,14 @@ public class Obstacle : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+
         }
     }
+
+
+
+
+
 
 
 }
